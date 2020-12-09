@@ -1,0 +1,17 @@
+.card {
+  height: 400px;
+  background: white;
+  align-items: center;
+  border-radius: 16px;
+  margin: 16px;
+  position: relative;
+
+  .contact {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+    position: absolute;
+    bottom: 32px;
+  }
+}

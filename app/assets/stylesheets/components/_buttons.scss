@@ -1,0 +1,31 @@
+.btn-pri {
+    background-color: $blue;
+    color: white;
+    padding: 8px 0px;
+    border-radius: 16px;
+    width: 124px;
+    text-align: center;
+    &:hover {
+      box-shadow: 0px 8px 16px rgba(48, 76, 253, 0.2);
+      text-decoration: none;
+      color: white;
+    }
+}
+
+
+.btn-sec {
+    background-color: white;
+    color: $dark-gray;
+    padding: 8px 0px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: $light-gray;
+    border-radius: 16px;
+    width: 124px;
+    text-align: center;
+    &:hover {
+      box-shadow: 0px 8px 16px rgba(48, 76, 253, 0.2);
+      text-decoration: none;
+      color: $dark-gray;
+    }
+}
