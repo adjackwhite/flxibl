@@ -1,0 +1,15 @@
+<div class="container">
+  <h2 class="row justify-content-center py-4">My freelancers</h2>
+  <div class = "row">
+    <% @freelancers.each do |freelancer| %>
+      <div class="col-lg-4">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to freelancer.user.first_name, profile_path(freelancer.id) %></h5>
+          <p class="card-text"><%= freelancer.profession %></p>
+          <a class="card-text" href="mailto:"<% freelancer.user.email %>>Email</a>
+          <a class="card-text" href="https://wa.me/"<%= freelancer.user.whatsapp_number %>>WhatsApp</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

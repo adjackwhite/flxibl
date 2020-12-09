@@ -1,0 +1,58 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <%= link_to 'Back', root_path, class: "btn btn-primary"%>
+      <div class="card p-4">
+      <%= simple_form_for(@profile) do |f| %>
+        <%= f.input :profession %>
+        <%= f.input :bio %>
+        <%= f.input :lowest_day_rate %>
+        <%= f.input :highest_day_rate %>
+        <%= f.input :location %>
+        <%= f.submit %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-8 mx-auto">
+      <div id="skill-form" class="card p-4">
+        <h1>Key skills</h1>
+          <%= simple_form_for([ @profile, @profile_skill ], remote: true) do |f| %>
+          <%= f.association :skill, collection: Skill.all.reject {|skill| @profile.skills.pluck(:skill).include?(skill.skill) }.map {|skill| [skill.skill, skill.id]} %>
+          <%= f.button :submit %>
+        <% end %>
+        <ul>
+        <% @profile.profile_skills.each do |profile_skill| %>
+          <li class="badge badge-success"><%= profile_skill.skill.skill %>
+            <%= link_to 'X', profile_skill_path(profile_skill),
+            method: :delete
+          %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-8 mx-auto">
+      <div id="link-form" class="card p-4">
+        <h1>Links</h1>
+          <%= simple_form_for([ @profile, @website_link ], remote: true) do |f| %>
+          <%= f.input :url %>
+          <%= f.input :label %>
+          <%= f.button :submit %>
+        <% end %>
+        <ul>
+        <% @profile.website_links.each do |website_link| %>
+          <li class="badge bg-info text-dark"><%= link_to website_link.label, website_link.url %>
+            <%= link_to 'X', website_link_path(website_link),
+            method: :delete %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+      <%= link_to 'Save', root_path, class: "btn btn-primary"%>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+}
+
+.banner h1 {
+  margin: 0;
+  color: #3F434A;
+  font-size: 72px;
+  font-weight: 600;
+}
+
+.banner-info {
+  padding: 48px;
+  z-index: 1;
+}
+
+.banner img {
+  width: 50%;
+  right: -150px;
+  width: 940px;
+  position: absolute;
+}
+
+.banner p {
+  font-size: 24px;
+  color: #3F434A;
+  opacity: .7;
+  margin-block-end: 56px;
+}

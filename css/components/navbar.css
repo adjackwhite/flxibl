@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  height: 100px;
+  background-color: white;
+  align-items: center;
+}
+
+.navbar li {
+  display:inline;
+  padding: 10px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #3F434A;
+}
+
+.navbar li:hover {
+  color: #blue;
+}

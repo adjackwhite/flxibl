@@ -1,0 +1,12 @@
+<h1>Freelancer profile</h1>
+
+
+
+<div>
+  <% if @profile.user == current_user %>
+    <%= link_to "Edit profile", edit_profile_path(@profile) %>
+    <%= link_to "Back to list", profiles_path %>
+  <% else %>
+      <%= link_to "Back to list", profiles_path %>
+  <% end %>
+</div>

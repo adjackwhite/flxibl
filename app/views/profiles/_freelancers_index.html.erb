@@ -1,0 +1,14 @@
+<div class="container">
+  <h2 class="row justify-content-center py-4">My clients</h2>
+  <div class = "row">
+    <% @managers.each do |manager| %>
+      <div class="col-lg-4">
+        <div class="card-body">
+          <h5 class="card-title"><%= manager.first_name %></h5>
+          <a class="card-text" href="mailto:"<% manager.email %>>Email</a>
+          <a class="card-text" href="https://wa.me/"<%= manager.whatsapp_number %>>WhatsApp</a>
+        </div>
+      </div>
+    <% end %>
+ </div>
+</div>
