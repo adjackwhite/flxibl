@@ -3,10 +3,12 @@
   <div class = "row">
     <% @managers.each do |manager| %>
       <div class="col-lg-4">
-        <div class="card-body">
-          <h5 class="card-title"><%= manager.first_name %></h5>
-          <a class="card-text" href="mailto:"<% manager.email %>>Email</a>
-          <a class="card-text" href="https://wa.me/"<%= manager.whatsapp_number %>>WhatsApp</a>
+        <div class="card">
+          <h5><%= manager.first_name %></h5>
+          <div class="contact">
+            <a class="btn-pri" href="mailto:"<% manager.email %>>Email</a>
+            <a class="btn-sec" href="https://wa.me/"<%= manager.whatsapp_number %>>WhatsApp</a>
+          </div>
         </div>
       </div>
     <% end %>
