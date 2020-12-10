@@ -48,7 +48,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:profession, :bio, :lowest_day_rate, :highest_day_rate, :location)
+    params.require(:profile).permit(:profession, :bio, :lowest_day_rate, :highest_day_rate, :location, :photo)
   end
 
   def set_profile

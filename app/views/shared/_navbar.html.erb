@@ -21,7 +21,13 @@
           <%= link_to "+ Add a freelancer", "#", class: "btn-pri d-block", id: "btn-nav" %>
         </li>
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if user_signed_in? && !current_user.manager && current_user.profile.photo.attached? %>
+              <%= cl_image_tag current_user.profile.photo.key,  class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% elsif user_signed_in? && current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key,  class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% elsif user_signed_in? %>
+                <%= cl_image_tag "avatar-1577909_640_vq4ofo.png",  class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, :opacity=>40 %>
+            <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to "Reset password", edit_user_registration_path, class: "dropdown-item" %>
             <% if current_user.profile %>

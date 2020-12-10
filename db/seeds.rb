@@ -16,7 +16,7 @@ User.destroy_all
 
 puts "Database cleaned"
 
-80.times do
+20.times do
   User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -40,10 +40,12 @@ User.where(manager: false).each do |user|
     user: user,
     profession: Faker::Job.position,
     bio: Faker::Lorem.paragraph(sentence_count: 4),
-    lowest_day_rate: [50..100].sample,
-    highest_day_rate: [200..400].sample,
+    lowest_day_rate: (50..100).to_a.sample,
+    highest_day_rate: (200..400).to_a.sample,
     location: Faker::Address.city
   )
+  file = URI.open('https://i.pravatar.cc/300')
+  profile.photo.attach(io: file, filename: 'profile_img.jpg', content_type: 'image/png')
   puts "#{Profile.count} profiles created"
   rand(2..5).times do
     ProfileSkill.create(skill: Skill.all.sample, profile: profile )
@@ -63,5 +65,6 @@ managers.each do |manager|
       user: manager,
       profile: freelancer.profile
     )
+    puts "#{Network.count} networks created"
   end
 end
