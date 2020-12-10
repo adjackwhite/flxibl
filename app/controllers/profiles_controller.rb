@@ -3,8 +3,11 @@ class ProfilesController < ApplicationController
 
 
   def index
-    @freelancers = current_user.profiles
-    @managers = current_user.managers
+    if current_user.manager?
+      @freelancers = current_user.profiles
+    else
+      @managers = current_user.managers
+    end
   end
 
   def show

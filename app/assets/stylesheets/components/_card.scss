@@ -5,8 +5,16 @@
   border-radius: 16px;
   margin: 16px;
   position: relative;
+  border-style: none;
+  box-shadow: -4px 8px 24px 0px rgba(44,63,88,0.02);
+  h5 {
+    margin-top: 32px;
+  }
+  a {
+    text-decoration: none;
+  }
 
-  .contact {
+  .card-contact {
     width: 100%;
     display: flex;
     justify-content: space-around;
