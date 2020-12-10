@@ -1,15 +1,33 @@
-<div class="container">
-  <h2 class="row justify-content-center py-4">My freelancers</h2>
-  <div class = "row">
-    <% @freelancers.each do |freelancer| %>
-      <div class="col-lg-4">
-        <div class="card">
-          <h5 class="card-title"><%= link_to freelancer.user.first_name, profile_path(freelancer.id) %></h5>
-          <p class="card-text"><%= freelancer.profession %></p>
-          <a class="card-text" href="mailto:"<% freelancer.user.email %>>Email</a>
-          <a class="card-text" href="https://wa.me/"<%= freelancer.user.whatsapp_number %>>WhatsApp</a>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2">
+      Search
+    </div>
+    <div class="col-sm-10">
+      <div class = "row">
+        <% @freelancers.each do |freelancer| %>
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+          <div class="card">
+              <%= link_to profile_path(freelancer.id) do %>
+                <% if freelancer.photo.attached? %>
+                  <%= cl_image_tag freelancer.photo.key, :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale" %>
+                <% else %>
+                  <%= cl_image_tag "avatar-1577909_640_vq4ofo.png", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
+                <% end %>
+              <% end %>
+            <h5><%= link_to freelancer.user.first_name, profile_path(freelancer.id) %></h5>
+            <div>
+              <h6 id="profession"><%= freelancer.profession %></h6>
+              <p>$<%= freelancer.lowest_day_rate %> - $<%= freelancer.highest_day_rate %> /per day</p>
+            </div>
+            <div class="card-contact">
+              <a class="btn-sec" href="mailto:"<% freelancer.user.email %>>Email</a>
+              <a class="btn-sec" href="https://wa.me/"<%= freelancer.user.whatsapp_number %>>WhatsApp</a>
+            </div>
+          </div>
         </div>
+      <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>

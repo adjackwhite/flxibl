@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-md-8 mx-auto">
       <%= link_to 'Back', root_path, class: "btn btn-primary"%>
-      <div class="card p-4">
+      <div class="form p-4">
       <%= simple_form_for(@profile) do |f| %>
+        <%= f.input :photo, as: :file %>
         <%= f.input :profession %>
         <%= f.input :bio %>
         <%= f.input :lowest_day_rate %>
@@ -16,7 +17,7 @@
   </div>
   <div class="row mt-5">
     <div class="col-md-8 mx-auto">
-      <div id="skill-form" class="card p-4">
+      <div id="skill-form" class="form p-4">
         <h1>Key skills</h1>
           <%= simple_form_for([ @profile, @profile_skill ], remote: true) do |f| %>
           <%= f.association :skill, collection: Skill.all.reject {|skill| @profile.skills.pluck(:skill).include?(skill.skill) }.map {|skill| [skill.skill, skill.id]} %>
@@ -36,7 +37,7 @@
 
   <div class="row mt-5">
     <div class="col-md-8 mx-auto">
-      <div id="link-form" class="card p-4">
+      <div id="link-form" class="form p-4">
         <h1>Links</h1>
           <%= simple_form_for([ @profile, @website_link ], remote: true) do |f| %>
           <%= f.input :url %>

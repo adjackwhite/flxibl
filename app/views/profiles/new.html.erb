@@ -1,9 +1,10 @@
 <div class="container py-5">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <div class="card p-4">
+      <div class="form p-4">
         <h1>Create your profile</h1>
         <%= simple_form_for(@profile) do |f| %>
+          <%= f.input :photo, as: :file %>
           <%= f.input :profession %>
           <%= f.input :bio %>
           <%= f.input :lowest_day_rate %>

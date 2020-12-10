@@ -4,4 +4,5 @@ class Profile < ApplicationRecord
   has_many :profile_skills, dependent: :destroy
   has_many :skills, through: :profile_skills
   has_many :networks, dependent: :destroy
+  has_one_attached :photo
 end
