@@ -2,6 +2,7 @@
     background-color: $blue;
     color: white;
     padding: 8px 0px;
+    box-shadow: 0px 2px 0px blue;
     border-radius: 16px;
     width: 124px;
     text-align: center;
@@ -14,7 +15,7 @@
 
 
 .btn-sec {
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0);
     color: $dark-gray;
     padding: 8px 0px;
     border-style: solid;
@@ -24,8 +25,10 @@
     width: 124px;
     text-align: center;
     &:hover {
-      box-shadow: 0px 8px 16px rgba(48, 76, 253, 0.2);
       text-decoration: none;
-      color: $dark-gray;
+      background-color: $light-blue;
+      color: $blue;
+      border: 2px solid rgba(0, 0, 0, 0);
+;
     }
 }
