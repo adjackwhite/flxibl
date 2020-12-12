@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @website_links = @profile.website_links
   end
 
   def new
