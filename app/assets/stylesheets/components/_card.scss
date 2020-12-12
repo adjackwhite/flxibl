@@ -1,6 +1,6 @@
 .card {
   text-align: center;
-  height: 480px;
+  height: 460px;
   background: white;
   align-items: center;
   border-radius: 16px;
@@ -32,4 +32,9 @@
   background-color: $opacity-green;
   border-radius: 8px;
   color: #20A144;
+}
+
+#location {
+  padding: 8px 16px;
+  margin: 0px 0px 8px;
 }

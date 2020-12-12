@@ -1,9 +1,25 @@
-<div>
-  <h1>Freelancer profile</h1>
-  <% if @profile.photo.attached? %>
-    <%= cl_image_tag @profile.photo.key, :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale" %>
-  <% else %>
-    <%= cl_image_tag "avatar-1577909_640_vq4ofo.png", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
-  <% end %>
+<div class="container">
+  <div class="row profile mt-3">
+    <div class="col-sm-9">
+
+    </div>
+    <div class="col-sm-3 card">
+    <% if @profile.photo.attached? %>
+      <%= cl_image_tag @profile.photo.key, :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale" %>
+    <% else %>
+      <%= cl_image_tag "avatar-1577909_640_vq4ofo.png", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
+    <% end %>
+      <div>
+        <li class="p-2"><a class="btn btn-sec" href="mailto:"<% @profile.user.email %>>Email</a></li>
+        <li class="p-2"><a class="btn btn-sec" href="https://wa.me/"<%= @profile.user.whatsapp_number %>>WhatsApp</a></li>
+        <% if @website_links.present? %>
+          <% @website_links.each do |link| %>
+            <li class ="p-2"><%= link_to link.label, link.url, class: "btn btn-sec" %></li>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
 <%= link_to "Back to list", profiles_path %>

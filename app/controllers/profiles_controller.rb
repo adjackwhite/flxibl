@@ -8,15 +8,13 @@ class ProfilesController < ApplicationController
       @freelancers = @freelancers.profession_search(params[:profession]) if params[:profession].present?
       @freelancers = @freelancers.skill_search(params[:skill]) if params[:skill].present?
       @freelancers = @freelancers.location_search(params[:location]) if params[:location].present?
-      @freelancers = @freelancers.where('lowest_day_rate >= ?', params[:lowest_rate]) if params[:lowest_rate].present?
-      @freelancers = @freelancers.where('highest_day_rate <= ?', params[:highest_rate]) if params[:highest_rate].present?
-
     else
-      @managers = current_user.managerss
+      @managers = current_user.managers
     end
   end
 
   def show
+    @website_links = @profile.website_links
   end
 
   def new
@@ -54,7 +52,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:profession, :bio, :lowest_day_rate, :highest_day_rate, :location, :photo)
+    params.require(:profile).permit(:profession, :bio, :location, :photo)
   end
 
   def set_profile
