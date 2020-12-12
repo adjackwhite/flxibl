@@ -5,35 +5,35 @@
       <div>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-field mt-4",
-          placeholder: "Find a freelancer"
+          class: "form-field my-3",
+          placeholder: "Search"
         %>
       </div>
-      <div>
-        <p>Profession:</p>
-        <select class="select2" name="profession">
+      <div class="my-3">
+        <label>Profession</label>
+        <select class="select2" style="width: 100% " name="profession[]" multiple="multiple">
           <% Profile.all.each do |profile| %>
             <option value="<%= profile.profession %>"><%= profile.profession %></option>
           <% end %>
         </select>
       </div>
-      <div>
+      <div class="my-3">
         <p>Skills</p>
-        <select class="select2" name="skill[]" multiple="multiple">
+        <select class="select2" style="width: 100%" name="skill[]" multiple="multiple">
           <% Skill.all.each do |skill| %>
             <option value="<%= skill.skill %>"><%= skill.skill %></option>
           <% end %>
         </select>
       </div>
-      <div>
-        <p>Location:</p>
-        <select class="select2" name="location">
+      <div class="my-3">
+        <label>Location</label>
+        <select class="select2" style="width: 100% " name="location[]" multiple="multiple">
           <% Profile.all.each do |profile| %>
             <option value="<%= profile.location %>"><%= profile.location %></option>
           <% end %>
         </select>
       </div>
-      <div class="d-flex justify-content-center p-1">
+      <div class="d-flex justify-content-center p-1 my-3">
           <%= submit_tag "Search", class: "btn-pri" %>
       </div>
      <% end %>
