@@ -13,6 +13,7 @@ puts "Cleaning database"
 Network.destroy_all
 Profile.destroy_all
 User.destroy_all
+Skill.destroy_all
 
 puts "Database cleaned"
 
