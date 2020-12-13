@@ -55,7 +55,8 @@ User.where(manager: false).each do |user|
   end
 
   rand(1..3).times do
-  Note.create(content: Faker::Quote.jack_handey, profile: profile )
+    Note.create(content: Faker::Quote.jack_handey, profile: profile )
+  end
 end
 
 managers = User.where(manager: true)
