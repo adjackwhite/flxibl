@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   resources :profiles do
     resources :profile_skills, only: [:create, :update]
     resources :website_links, only: [:create, :update]
-    resources :notes, only: [:create, :update]
+    resources :notes, only: [:create, :update, :destroy]
   end
   resources :profile_skills, only: [:destroy]
   resources :website_links, only: [:destroy]
-  resources :notes, only: [:destroy]
 end
