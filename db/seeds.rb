@@ -41,8 +41,6 @@ User.where(manager: false).each do |user|
     user: user,
     profession: Faker::Job.position,
     bio: Faker::Lorem.paragraph(sentence_count: 4),
-    lowest_day_rate: (50..100).to_a.sample,
-    highest_day_rate: (200..400).to_a.sample,
     location: Faker::Address.city
   )
   file = URI.open('https://i.pravatar.cc/300')
