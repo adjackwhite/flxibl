@@ -11,7 +11,7 @@
       </div>
       <div class="my-3">
         <label>Profession</label>
-        <select class="select2" style="width: 100% " name="profession[]" multiple="multiple">
+        <select class="select2" style="width: 100%" name="profession[]" multiple="multiple">
           <% Profile.all.each do |profile| %>
             <option value="<%= profile.profession %>"><%= profile.profession %></option>
           <% end %>
@@ -27,7 +27,7 @@
       </div>
       <div class="my-3">
         <label>Location</label>
-        <select class="select2" style="width: 100% " name="location[]" multiple="multiple">
+        <select class="select2" style="width: 100%" name="location[]" multiple="multiple">
           <% Profile.all.each do |profile| %>
             <option value="<%= profile.location %>"><%= profile.location %></option>
           <% end %>
