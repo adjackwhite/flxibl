@@ -1,9 +1,41 @@
 <div class="container">
-  <div class="row profile mt-3">
+  <div class="row profile my-4">
     <div class="col-sm-9">
+      <div class="d-flex flex-row">
+        <h2><%= @profile.user.first_name %> <%= @profile.user.last_name %></h2>
+        <h6 id="profession" class="mx-3"><%= @profile.profession %></h6>
+      </div>
+      <div class="my-3">
+        <p><%= @profile.profile_skills %></p>
+      </div>
+      <div class="my-3">
+        <p><%= @profile.bio %></p>
+      </div>
+
+      <div>
+        <%= simple_form_for [ @profile, @note ] do |f| %>
+          <%= f.input :content, label: false %>
+          <%= f.button :submit, 'Add note', class: "btn btn-pri m-2" %>
+        <% end %>
+        <ul class="list-group">
+          <% @profile.notes.each do |note| %>
+            <li class="list-group-item">
+              <%= note.content %>
+              <%= link_to "Delete",
+                  [@profile, note],
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+            </li>
+          <% end %>
+        </ul>
+
+
+
+        <%= link_to "< Back", profiles_path, class:"btn btn-pri back-btn" %>
+      </div>
 
     </div>
-    <div class="col-sm-3 card">
+    <div class="profile-contact col-sm-3">
     <% if @profile.photo.attached? %>
       <%= cl_image_tag @profile.photo.key, :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale" %>
     <% else %>
@@ -21,5 +53,3 @@
     </div>
   </div>
 </div>
-
-<%= link_to "Back to list", profiles_path %>

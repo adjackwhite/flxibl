@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
 
   def show
     @website_links = @profile.website_links
+    @note = Note.new
   end
 
   def new
@@ -47,7 +48,6 @@ class ProfilesController < ApplicationController
 
   def destroy
   end
-
 
   private
 
