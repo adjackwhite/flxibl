@@ -14,6 +14,7 @@ Network.destroy_all
 Profile.destroy_all
 User.destroy_all
 Skill.destroy_all
+Note.destroy_all
 
 puts "Database cleaned"
 
