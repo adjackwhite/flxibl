@@ -1,9 +1,21 @@
 <div class="container">
-  <div class="row profile mt-3">
+  <div class="row profile my-4">
     <div class="col-sm-9">
-
+      <div class="d-flex flex-row">
+        <h2><%= @profile.user.first_name %> <%= @profile.user.last_name %></h2>
+        <h6 id="profession" class="mx-3"><%= @profile.profession %></h6>
+      </div>
+      <div class="my-3">
+        <p><%= @profile.profile_skills %></p>
+      </div>
+      <div class="my-3">
+        <p><%= @profile.bio %></p>
+      </div>
+      <div>
+        <%= link_to "< Back", profiles_path, class:"btn btn-pri back-btn" %>
+      </div>
     </div>
-    <div class="col-sm-3 card">
+    <div class="profile-contact col-sm-3">
     <% if @profile.photo.attached? %>
       <%= cl_image_tag @profile.photo.key, :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale" %>
     <% else %>
@@ -21,5 +33,3 @@
     </div>
   </div>
 </div>
-
-<%= link_to "Back to list", profiles_path %>
