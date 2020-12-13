@@ -53,6 +53,9 @@ User.where(manager: false).each do |user|
   rand(1..3).times do
     WebsiteLink.create(url: "www.google.com", label: "Google", profile: profile )
   end
+
+  rand(1..3).times do
+  Note.create(content: Faker::Quote.jack_handey, profile: profile )
 end
 
 managers = User.where(manager: true)
