@@ -16,7 +16,7 @@
       <div>
         <%= simple_form_for [ @profile, @note ] do |f| %>
           <%= f.input :content, label: false %>
-          <%= f.button :submit, 'Add note', class: "btn btn-pri m-2" %>
+          <%= f.button :submit, 'Add note', class: "btn btn-pri my-2" %>
         <% end %>
         <ul class="list-group">
           <% @profile.notes.each do |note| %>
@@ -43,11 +43,11 @@
       <%= cl_image_tag "avatar-1577909_640_vq4ofo.png", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
     <% end %>
       <div>
-        <li class="p-2"><a class="btn btn-sec" href="mailto:"<% @profile.user.email %>>Email</a></li>
-        <li class="p-2"><a class="btn btn-sec" href="https://wa.me/"<%= @profile.user.whatsapp_number %>>WhatsApp</a></li>
+        <li class="p-2"><a class="btn btn-sec" href="mailto:" <% @profile.user.email %>>Email</a></li>
+        <li class="p-2"><a class="btn btn-sec" href="https://wa.me/" target="_blank"<%= @profile.user.whatsapp_number %>>WhatsApp</a></li>
         <% if @website_links.present? %>
           <% @website_links.each do |link| %>
-            <li class ="p-2"><%= link_to link.label, link.url, class: "btn btn-sec" %></li>
+            <li class ="p-2"><%= link_to link.label, link.url, class: "btn btn-sec", target:"_blank" %></li>
           <% end %>
         <% end %>
       </div>
