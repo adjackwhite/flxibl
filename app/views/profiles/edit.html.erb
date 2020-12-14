@@ -1,7 +1,7 @@
 <div class="container py-5">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <%= link_to 'Back', root_path, class: "btn btn-primary"%>
+      <%= link_to 'Back', root_path, class: "btn btn-pri"%>
       <div class="form p-4">
       <%= simple_form_for(@profile) do |f| %>
         <%= f.input :photo, as: :file %>
@@ -16,7 +16,6 @@
   <div class="row mt-5">
     <div class="col-md-8 mx-auto">
       <div id="skill-form" class="form p-4">
-        <h5>Key skills</h5>
           <%= simple_form_for([ @profile, @profile_skill ], remote: true) do |f| %>
           <%= f.label :Top_5_skills %>:
           <%= f.association :skill, collection: Skill.all.reject {|skill| @profile.skills.pluck(:skill).include?(skill.skill) }.map {|skill| [skill.skill, skill.id]} %>
@@ -37,8 +36,8 @@
   <div class="row mt-5">
     <div class="col-md-8 mx-auto">
       <div id="link-form" class="form p-4">
-        <h5>Website links</h5>
           <%= simple_form_for([ @profile, @website_link ], remote: true) do |f| %>
+          <%= f.label :Website_links %>
           <%= f.input :url %>
           <%= f.input :label %>
           <%= f.button :submit, class: "btn btn-submit" %>
