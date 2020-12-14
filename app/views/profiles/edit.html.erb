@@ -1,14 +1,18 @@
 <div class="container py-5">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <%= link_to 'Back', root_path, class: "btn btn-primary"%>
+      <%= link_to 'Back', root_path, class: "btn btn-pri"%>
       <div class="form p-4">
       <%= simple_form_for(@profile) do |f| %>
+        <%= simple_fields_for current_user do |k| %>
+          <%= k.input :first_name %>
+          <%= k.input :last_name %>
+        <% end %>
         <%= f.input :photo, as: :file %>
         <%= f.input :profession %>
         <%= f.input :bio %>
         <%= f.input :location %>
-        <%= f.submit %>
+        <%= f.button :submit, class: "btn btn-submit" %>
       <% end %>
       </div>
     </div>
@@ -16,10 +20,9 @@
   <div class="row mt-5">
     <div class="col-md-8 mx-auto">
       <div id="skill-form" class="form p-4">
-        <h1>Key skills</h1>
           <%= simple_form_for([ @profile, @profile_skill ], remote: true) do |f| %>
-          <%= f.association :skill, collection: Skill.all.reject {|skill| @profile.skills.pluck(:skill).include?(skill.skill) }.map {|skill| [skill.skill, skill.id]} %>
-          <%= f.button :submit %>
+          <%= f.association :skill, label: "Skills (5 max)", collection: Skill.all.reject {|skill| @profile.skills.pluck(:skill).include?(skill.skill) }.map {|skill| [skill.skill, skill.id]} %>
+          <%= f.button :submit, class: "btn btn-submit" %>
         <% end %>
         <ul>
         <% @profile.profile_skills.each do |profile_skill| %>
@@ -36,11 +39,10 @@
   <div class="row mt-5">
     <div class="col-md-8 mx-auto">
       <div id="link-form" class="form p-4">
-        <h1>Links</h1>
           <%= simple_form_for([ @profile, @website_link ], remote: true) do |f| %>
-          <%= f.input :url %>
+          <%= f.input :url, label: "Website link" %>
           <%= f.input :label %>
-          <%= f.button :submit %>
+          <%= f.button :submit, class: "btn btn-submit" %>
         <% end %>
         <ul>
         <% @profile.website_links.each do |website_link| %>
@@ -51,7 +53,7 @@
         <% end %>
         </ul>
       </div>
-      <%= link_to 'Save', root_path, class: "btn btn-primary"%>
+      <%= link_to 'Save', root_path, class: "btn btn-pri" %>
     </div>
   </div>
 </div>
