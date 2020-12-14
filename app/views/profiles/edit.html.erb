@@ -1,12 +1,13 @@
 <div class="container py-5">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <%= link_to 'Back', root_path, class: "btn btn-pri"%>
+      <%= link_to 'Back', profiles_path, class: "btn btn-pri"%>
       <div class="form p-4">
       <%= simple_form_for(@profile) do |f| %>
         <%= simple_fields_for current_user do |k| %>
           <%= k.input :first_name %>
           <%= k.input :last_name %>
+          <%= k.input :whatsapp_number %>
         <% end %>
         <%= f.input :photo, as: :file %>
         <%= f.input :profession %>
@@ -53,7 +54,7 @@
         <% end %>
         </div>
       </div>
-      <%= link_to 'Save', root_path, class: "btn btn-pri" %>
+      <%= link_to 'Save', profiles_path, class: "btn btn-pri" %>
     </div>
   </div>
 </div>
