@@ -1,3 +1,5 @@
+require 'csv'
+
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
@@ -11,6 +13,17 @@ class ProfilesController < ApplicationController
     else
       @managers = current_user.managers
     end
+  end
+
+  def import
+  end
+
+  def upload_csv
+    path = params[:profile][:file].tempfile.path
+    CSV.foreach(path) do |row|
+      User.invite!({ email: row[0] }, current_user)
+    end
+    redirect_to profiles_path
   end
 
   def show
@@ -39,7 +52,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    if @profile.update(profile_params)
+    if @profile.user.update(user_params) && @profile.update(profile_params)
       redirect_to profile_path(@profile)
     else
       render :new
@@ -53,6 +66,10 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:profession, :bio, :location, :photo)
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name)
   end
 
   def set_profile

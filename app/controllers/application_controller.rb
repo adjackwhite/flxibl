@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    stored_location_for(user) || profiles_path
+    if user.first_name.nil?
+      edit_profile_path
+    else
+      stored_location_for(user) || profiles_path
+    end
+  end
+
+  def after_accept_path_for(resource)
+    edit_profile_path(resource.profile)
   end
 end

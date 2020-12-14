@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controller: { registrations: "registrations" }
   root to: 'pages#home'
   resources :profiles do
+    collection do
+      get :import
+      post :upload_csv
+    end
     resources :profile_skills, only: [:create, :update]
     resources :website_links, only: [:create, :update]
     resources :notes, only: [:create, :update, :destroy]

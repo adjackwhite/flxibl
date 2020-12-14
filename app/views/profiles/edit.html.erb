@@ -4,6 +4,10 @@
       <%= link_to 'Back', root_path, class: "btn btn-pri"%>
       <div class="form p-4">
       <%= simple_form_for(@profile) do |f| %>
+        <%= simple_fields_for current_user do |k| %>
+          <%= k.input :first_name %>
+          <%= k.input :last_name %>
+        <% end %>
         <%= f.input :photo, as: :file %>
         <%= f.input :profession %>
         <%= f.input :bio %>
@@ -17,8 +21,7 @@
     <div class="col-md-8 mx-auto">
       <div id="skill-form" class="form p-4">
           <%= simple_form_for([ @profile, @profile_skill ], remote: true) do |f| %>
-          <%= f.label :Top_5_skills %>:
-          <%= f.association :skill, collection: Skill.all.reject {|skill| @profile.skills.pluck(:skill).include?(skill.skill) }.map {|skill| [skill.skill, skill.id]} %>
+          <%= f.association :skill, label: "Skills (5 max)", collection: Skill.all.reject {|skill| @profile.skills.pluck(:skill).include?(skill.skill) }.map {|skill| [skill.skill, skill.id]} %>
           <%= f.button :submit, class: "btn btn-submit" %>
         <% end %>
         <ul>
@@ -37,8 +40,7 @@
     <div class="col-md-8 mx-auto">
       <div id="link-form" class="form p-4">
           <%= simple_form_for([ @profile, @website_link ], remote: true) do |f| %>
-          <%= f.label :Website_links %>
-          <%= f.input :url %>
+          <%= f.input :url, label: "Website link" %>
           <%= f.input :label %>
           <%= f.button :submit, class: "btn btn-submit" %>
         <% end %>

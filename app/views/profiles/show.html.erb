@@ -42,7 +42,7 @@
     <% if @profile.photo.attached? %>
       <%= cl_image_tag @profile.photo.key, :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale" %>
     <% else %>
-      <%= cl_image_tag "avatar-1577909_640_vq4ofo.png", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
+      <%= cl_image_tag "avatar-1577909_640_pvizad", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
     <% end %>
       <div>
         <li class="p-2"><a class="btn btn-sec" href="mailto:" <% @profile.user.email %>>Email</a></li>
