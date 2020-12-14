@@ -1,28 +1,22 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-2 filter">
-      <!-- Search -->
-    </div>
-    <div class="col-sm-10 mt-3">
-      <div class = "row">
-        <% @managers.each do |manager| %>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
-          <div class="card">
-              <% if manager.photo.attached? %>
-                <%= cl_image_tag manager.photo.key, :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale" %>
-              <% else %>
-                <%= cl_image_tag "avatar-1577909_640_vq4ofo.png", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
-              <% end %>
-            <% end %>
-            <h5><%= manager.first_name %></h5>
-            <div class="card-contact">
-              <a class="btn-sec" href="mailto:"<% manager.email %>>Email</a>
-              <a class="btn-sec" href="https://wa.me/"<%= manager.whatsapp_number %>>WhatsApp</a>
-            </div>
+  <div class="mt-3 px-4">
+    <div class="row">
+      <% @managers.each do |manager| %>
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="card">
+          <% if manager.photo.attached? %>
+            <%= cl_image_tag manager.photo.key, :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale" %>
+          <% else %>
+            <%= cl_image_tag "avatar-1577909_640_pvizad", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
+          <% end %>
+          <h5><%= manager.first_name %></h5>
+          <div class="card-contact">
+            <a class="btn-sec" href="mailto:"<% manager.email %>>Email</a>
+            <a class="btn-sec" href="https://wa.me/"<%= manager.whatsapp_number %>>WhatsApp</a>
           </div>
         </div>
-      <% end %>
       </div>
+    <% end %>
     </div>
   </div>
 </div>

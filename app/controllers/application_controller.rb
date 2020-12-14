@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    if user.first_name.nil?
+    if user.first_name.nil? && !user.manager
       edit_profile_path
     else
       stored_location_for(user) || profiles_path

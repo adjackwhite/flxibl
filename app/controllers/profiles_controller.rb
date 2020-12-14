@@ -21,7 +21,12 @@ class ProfilesController < ApplicationController
   def upload_csv
     path = params[:profile][:file].tempfile.path
     CSV.foreach(path) do |row|
-      User.invite!({ email: row[0] }, current_user)
+    freelancer = User.find_by(email: row[0])
+      if freelancer
+        Network.create(user: current_user, profile: freelancer.profile )
+      else
+        User.invite!({ email: row[0] }, current_user)
+      end
     end
     redirect_to profiles_path
   end
