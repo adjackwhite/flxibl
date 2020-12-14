@@ -6,8 +6,10 @@
         <h2><%= @profile.user.first_name %> <%= @profile.user.last_name %></h2>
         <h6 id="profession" class="mx-3"><%= @profile.profession %></h6>
       </div>
-      <div class="my-3">
-        <p><%= @profile.profile_skills %></p>
+      <div class="my-3 d-flex d-row">
+        <% @profile.profile_skills.each do |profile_skill| %>
+          <li id="skills" class="mx-2"> <%= profile_skill.skill.skill %> </li>
+        <% end %>
       </div>
       <div class="my-3">
         <p><%= @profile.bio %></p>

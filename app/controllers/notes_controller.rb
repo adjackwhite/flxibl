@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-before_action :set_profile, except: :destroy
+before_action :set_profile
 
   def create
     @note = Note.new(note_params)
@@ -14,7 +14,7 @@ before_action :set_profile, except: :destroy
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
-    redirect_to profile_path(params[:profile_id])
+    redirect_to profile_path(@profile)
   end
 
   private
