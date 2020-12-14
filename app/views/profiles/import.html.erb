@@ -1,0 +1,12 @@
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h5>Invite your freelancers</h5>
+      <%= simple_form_for :profile, url: upload_csv_profiles_path, method: :post do |f| %>
+      <%= f.input :file, input_html: {value: ""}, as: :file, label: :Upload_a_CSV %>
+      <%= f.submit "Upload", class: "btn btn-pri" %>
+      <% end %>
+    </div>
+  </div>
+</div>
