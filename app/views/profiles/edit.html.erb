@@ -8,7 +8,7 @@
         <%= f.input :profession %>
         <%= f.input :bio %>
         <%= f.input :location %>
-        <%= f.submit %>
+        <%= f.button :submit, class: "btn btn-submit" %>
       <% end %>
       </div>
     </div>
@@ -16,10 +16,11 @@
   <div class="row mt-5">
     <div class="col-md-8 mx-auto">
       <div id="skill-form" class="form p-4">
-        <h1>Key skills</h1>
+        <h5>Key skills</h5>
           <%= simple_form_for([ @profile, @profile_skill ], remote: true) do |f| %>
+          <%= f.label :Top_5_skills %>:
           <%= f.association :skill, collection: Skill.all.reject {|skill| @profile.skills.pluck(:skill).include?(skill.skill) }.map {|skill| [skill.skill, skill.id]} %>
-          <%= f.button :submit %>
+          <%= f.button :submit, class: "btn btn-submit" %>
         <% end %>
         <ul>
         <% @profile.profile_skills.each do |profile_skill| %>
@@ -36,11 +37,11 @@
   <div class="row mt-5">
     <div class="col-md-8 mx-auto">
       <div id="link-form" class="form p-4">
-        <h1>Links</h1>
+        <h5>Website links</h5>
           <%= simple_form_for([ @profile, @website_link ], remote: true) do |f| %>
           <%= f.input :url %>
           <%= f.input :label %>
-          <%= f.button :submit %>
+          <%= f.button :submit, class: "btn btn-submit" %>
         <% end %>
         <ul>
         <% @profile.website_links.each do |website_link| %>
@@ -51,7 +52,7 @@
         <% end %>
         </ul>
       </div>
-      <%= link_to 'Save', root_path, class: "btn btn-primary"%>
+      <%= link_to 'Save', root_path, class: "btn btn-pri" %>
     </div>
   </div>
 </div>
