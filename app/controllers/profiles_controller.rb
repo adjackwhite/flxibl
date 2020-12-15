@@ -1,6 +1,7 @@
 require 'csv'
 
 class ProfilesController < ApplicationController
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/
   before_action :set_profile, only: [:show, :edit, :update]
 
   def index
@@ -21,30 +22,44 @@ class ProfilesController < ApplicationController
   def upload_csv
     path = params[:profile][:file].tempfile.path
     count = 0
+    emails = []
     CSV.foreach(path) do |row|
-    freelancer = User.find_by(email: row[0])
+      if row[0].match?(EMAIL_REGEX)
+        emails << row[0]
+      else
+        flash[:alert] = "Oops, it seems like an email was invalid"
+        redirect_to import_profiles_path
+        return
+      end
+    end
+    emails.each do |email|
+      freelancer = User.find_by(email: email)
       if freelancer
         Network.create(user: current_user, profile: freelancer.profile )
       else
-        User.invite!({ email: row[0] }, current_user)
+        User.invite!({ email: email }, current_user)
       end
       count += 1
     end
-    redirect_to profiles_path
+
     flash[:notice] = "#{count} freelancers have been invited to your network"
+    redirect_to profiles_path
   end
 
   def invite
+    unless params[:profile][:email].match?(EMAIL_REGEX)
+      redirect_to import_profiles_path
+      flash[:alert] = "Ops, it seems like the email is invalid"
+      return
+    end
       freelancer = User.find_by(email: params[:profile][:email])
       if freelancer
         Network.create(user: current_user, profile: freelancer.profile )
       else
         User.invite!({ email: params[:profile][:email] }, current_user)
       end
-      if freelancer
-        redirect_to profiles_path
-        flash[:notice] = "#{params[:profile][:email]} has been invited to your network"
-      end
+      redirect_to profiles_path
+      flash[:notice] = "#{params[:profile][:email]} has been invited to your network"
   end
 
   def show
@@ -98,3 +113,10 @@ class ProfilesController < ApplicationController
   end
 
 end
+
+
+
+
+
+
+
