@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get :import
       post :upload_csv
+      post :invite
     end
     resources :profile_skills, only: [:create, :update]
     resources :website_links, only: [:create, :update]

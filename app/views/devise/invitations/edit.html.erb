@@ -1,0 +1,32 @@
+<div class="background-blue">
+  <div class="row">
+    <div class="col-md-6 col-sm-12 d-flex justify-content-center">
+      <div class="w-75 my-5 d-flex justify-content-center align-items-center">
+        <%= cl_image_tag "Illustration_wky126", :height=>600, :quality=>100 %>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
+      <div class="login w-75">
+        <h2 class="mt-5">Join Us</h2>
+        <div class="align-items-center p-5">
+          <%= simple_form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+            <%= f.hidden_field :invitation_token %>
+
+            <div class="form-inputs">
+              <%= f.input :password %>
+              <%= f.input :password_confirmation %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, t("devise.invitations.edit.submit_button"), class: "btn-pri" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
