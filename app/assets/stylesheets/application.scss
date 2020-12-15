@@ -12,3 +12,16 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+
+.select2-selection--multiple {
+    border: none !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    background-color: white !important;
+    border-radius: 16px !important;
+    padding: 3px 8px !important;
+    border: 2px solid #E8E9EB !important;
+    margin: 8px 0px !important;
+}

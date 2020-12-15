@@ -27,6 +27,7 @@ puts "Database cleaned"
     whatsapp_number: Faker::PhoneNumber.cell_phone_in_e164,
     manager: [true, false].sample
   )
+  Profile.last&.destroy
   puts "#{User.count} users created"
 end
 
@@ -41,7 +42,7 @@ User.where(manager: false).each do |user|
   profile = Profile.create!(
     user: user,
     profession: Faker::Job.position,
-    bio: Faker::Lorem.paragraph(sentence_count: 4),
+    bio: Faker::Lorem.paragraph(sentence_count: 8),
     location: Faker::Address.city
   )
   file = URI.open('https://i.pravatar.cc/300')
@@ -51,8 +52,11 @@ User.where(manager: false).each do |user|
     ProfileSkill.create(skill: Skill.all.sample, profile: profile )
   end
 
+links = { Dribbble: "www.dribbble.com", Instagram: "www.instagram.com", LinkedIn: "www.linkedin.com"}
   rand(1..3).times do
-    WebsiteLink.create(url: "www.google.com", label: "Google", profile: profile )
+    rand_key = links.keys.sample
+    url = links[rand_key]
+    WebsiteLink.create(url: url, label: rand_key, profile: profile )
   end
 
   rand(1..3).times do
