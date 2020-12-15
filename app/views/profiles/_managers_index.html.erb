@@ -50,10 +50,20 @@
                   <%= cl_image_tag "avatar-1577909_640_pvizad", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
                 <% end %>
               <% end %>
-            <h5><%= link_to freelancer.user.first_name, profile_path(freelancer.id) %></h5>
+              <%= link_to profile_path(freelancer.id) do %>
+                <% if freelancer.user.first_name? %>
+                  <h5> <%= freelancer.user.first_name %> </h5>
+                <% else %>
+                  <h5> <%= freelancer.user.email %> </h5>
+                <% end %>
+              <% end %>
             <div>
-              <h6 id="profession"><%= freelancer.profession %></h6>
-              <p id="location"><i class="fas fa-map-marker-alt"></i> <%= freelancer.location %></p>
+              <% if freelancer.profession? %>
+                  <h6 id="profession"><%= freelancer.profession %></h6>
+              <% end %>
+              <% if freelancer.location? %>
+                  <p id="location"><i class="fas fa-map-marker-alt"></i> <%= freelancer.location %></p>
+              <% end %>
             </div>
             <div class="card-contact">
               <a class="btn-sec" href="mailto:"<% freelancer.user.email %>>Email</a>
