@@ -47,7 +47,7 @@
                 <% if freelancer.photo.attached? %>
                   <%= cl_image_tag freelancer.photo.key, :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale" %>
                 <% else %>
-                  <%= cl_image_tag "avatar-1577909_640_vq4ofo.png", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
+                  <%= cl_image_tag "avatar-1577909_640_pvizad", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
                 <% end %>
               <% end %>
             <h5><%= link_to freelancer.user.first_name, profile_path(freelancer.id) %></h5>
