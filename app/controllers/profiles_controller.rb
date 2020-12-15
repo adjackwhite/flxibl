@@ -49,7 +49,7 @@ class ProfilesController < ApplicationController
   def invite
     unless params[:profile][:email].match?(EMAIL_REGEX)
       redirect_to import_profiles_path
-      flash[:alert] = "Ops, it seems like the email is invalid"
+      flash[:alert] = "Oops, it seems like the email is invalid"
       return
     end
       freelancer = User.find_by(email: params[:profile][:email])
