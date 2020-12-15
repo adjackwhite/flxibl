@@ -22,7 +22,6 @@ class User < ApplicationRecord
     end
   end
 
-
   def managers
     User.joins(:networks).where(networks: { profile_id: profile.id })
   end
