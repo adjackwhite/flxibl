@@ -12,7 +12,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     if user.first_name.nil? && !user.manager
-      edit_profile_path
+      edit_profile_path(user.profile)
+    end
+    if user.company.nil? && user.manager
+      edit_manager_profile_users_path
     else
       stored_location_for(user) || profiles_path
     end
