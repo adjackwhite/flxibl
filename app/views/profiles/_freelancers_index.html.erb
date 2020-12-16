@@ -9,7 +9,15 @@
           <% else %>
             <%= cl_image_tag "avatar-1577909_640_pvizad", :height=>180, :quality=>100, :radius=>64, :width=>180, :crop=>"scale", :opacity=>24%>
           <% end %>
-          <h5><%= manager.first_name %></h5>
+            <div>
+              <% if manager.title %>
+                  <h6 id="profession"><%= manager.title %></h6>
+              <% end %>
+              <% if manager.company %>
+                  <p id="location"></i> <%= manager.company %></p>
+              <% end %>
+            </div>
+          <h5><%= manager.full_name %></h5>
           <div class="card-contact">
             <a class="btn-sec" href="mailto:"<% manager.email %>>Email</a>
             <a class="btn-sec" href="https://wa.me/"<%= manager.whatsapp_number %>>WhatsApp</a>

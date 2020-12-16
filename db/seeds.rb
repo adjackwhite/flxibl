@@ -18,17 +18,23 @@ Note.destroy_all
 
 puts "Database cleaned"
 
-20.times do
-  User.create!(
+30.times do
+  user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: "123456",
     whatsapp_number: Faker::PhoneNumber.cell_phone_in_e164,
-    manager: [true, false].sample
+    manager: [true, false].sample,
+    company: Faker::Company.name,
+    title: ["Studio Manager", "Lead Project Manager", "General Manager", "Resource Manager"].sample
   )
   Profile.last&.destroy
   puts "#{User.count} users created"
+  if user.manager
+    file = URI.open('https://i.pravatar.cc/300')
+    user.photo.attach(io: file, filename: 'profile_img.jpg', content_type: 'image/png')
+  end
 end
 
 40.times do

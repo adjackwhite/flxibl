@@ -10,11 +10,13 @@ class User < ApplicationRecord
   has_many :profiles, through: :networks
   after_create :generate_profile
   after_update :generate_network
+  validates :manager, inclusion: { in: [true, false], message: "Please choose one type of profile" }
   # has_many :users, thrUser.ough: :networks
 
   def generate_profile
      Profile.create(user: self) if !self.manager
   end
+
 
   def generate_network
     if self.invited_by_id #if the user has been  invited

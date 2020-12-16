@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   end
   resources :profile_skills, only: [:destroy]
   resources :website_links, only: [:destroy]
+  resources :users do
+    collection do
+      get :edit_manager_profile, to: "users#edit_manager_profile"
+    end
+  end
 end

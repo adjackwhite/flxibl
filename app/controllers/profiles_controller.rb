@@ -20,6 +20,11 @@ class ProfilesController < ApplicationController
   end
 
   def upload_csv
+    if !params[:profile].present? || !params[:profile][:file].present?
+      redirect_to import_profiles_path
+      flash[:alert] = "No file uploaded"
+      return
+    end
     path = params[:profile][:file].tempfile.path
     count = 0
     emails = []
