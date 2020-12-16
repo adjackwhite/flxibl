@@ -25,4 +25,8 @@ class User < ApplicationRecord
   def managers
     User.joins(:networks).where(networks: { profile_id: profile.id })
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
