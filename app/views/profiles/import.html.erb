@@ -1,15 +1,30 @@
-<div class="container py-5">
+<div class="background-blue">
   <div class="row">
-    <div class="col-md-8 mx-auto">
-      <h5>Grow your network</h5>
-      <%= simple_form_for :profile, url: invite_profiles_path, method: :post do |f| %>
-        <%= f.email_field :email, label: :email, class: "w-50" %>
-        <%= f.submit 'Invite', id: "sweet-alert", class: "btn btn-pri" %>
-      <% end %>
-      <%= simple_form_for :profile, url: upload_csv_profiles_path, method: :post do |f| %>
-        <%= f.input :file, input_html: {value: ""}, as: :file, label: :Upload_a_CSV %>
-        <%= f.submit "Upload", class: "btn btn-pri" %>
-      <% end %>
+    <div class="col-md-6 col-sm-12 d-flex justify-content-center">
+      <div class="w-75 my-5 d-flex justify-content-center align-items-center">
+        <%= image_tag "Messages.png", :height=>600, :quality=>100 %>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
+      <div class="login w-75">
+        <h2 class="mt-5">Grow your network</h2>
+        <div class="align-items-center p-3">
+          <%= simple_form_for :profile, url: invite_profiles_path, method: :post do |f| %>
+          <div class="d-flex justify-content-between align-items-center">
+            <%= f.input :email, placeholder: "Email address", label: "Invite a freelancer", class: "w-50", wrapper_html: {class: "flex-grow-1"}%>
+            <div class="ml-3">
+            <%= f.submit 'Invite', id: "sweet-alert", class: "btn btn-pri mt-3" %>
+            </div>
+          </div>
+        <% end %>
+        <%= simple_form_for :profile, url: upload_csv_profiles_path, method: :post do |f| %>
+          <div class="d-flex justify-content-between align-items-center">
+          <%= f.input :file, input_html: {value: ""}, as: :file, label: "Upload a CSV", wrapper_html: {class: "flex-grow-1"}%>
+          <%= f.submit "Upload", class: "btn btn-pri" %>
+          </div>
+        <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
