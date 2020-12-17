@@ -1,3 +1,8 @@
+
+<% content_for :meta_title, "#{@profile.user.full_name} is on #{DEFAULT_META["meta_profile_name"]}" %>
+<% content_for :meta_description, @profile.bio %>
+<% content_for :meta_image, cl_image_path(@profile.photo.path) %>
+
 <div class="container">
   <div class="row profile my-4">
     <div class="col-sm-9">
