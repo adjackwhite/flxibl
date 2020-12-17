@@ -5,8 +5,19 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  z-index: 1;
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.modal-content {
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.social-share-button {
+  display: flex;
+  justify-content: space-around;
 }

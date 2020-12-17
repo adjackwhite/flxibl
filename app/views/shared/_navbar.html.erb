@@ -21,11 +21,11 @@
             <!-- ???? -->
             <%= link_to "+ Add a freelancer", import_profiles_path, class: "btn-pri d-block", id: "btn-nav" %>
           </li>
-        <% elsif user_signed_in? %>
+        <% elsif user_signed_in? && current_user.profile && current_user.profile.photo.attached? %>
           <li class="nav-item active">
-            <%= link_to import_profiles_path, class: "btn-pri d-block", id: "btn-nav" do %>
-               Share my profile <i class="fas fa-share-alt mx-1"></i>
-            <% end %>
+            <button type="button" id="btn-nav" class="btn-pri d-block" data-toggle="modal" data-target="#exampleModal">
+              Share my profile <i class="fas fa-share-alt mx-1"></i>
+            </button>
           </li>
       <% end %>
         <li class="nav-item dropdown">
@@ -55,3 +55,35 @@
     </ul>
   </div>
 </div>
+
+
+<% if user_signed_in? && current_user.profile && current_user.profile.photo.attached?  %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Share my profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <%= social_share_button_tag(current_user.full_name, url: "https://flxibl.herokuapp.com/profiles/#{current_user.profile.id}") %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+

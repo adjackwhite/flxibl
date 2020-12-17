@@ -10,6 +10,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= javascript_include_tag 'application', defer: true %>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
@@ -21,6 +23,11 @@
   </head>
 
   <body>
+    <% if user_signed_in? && current_user.profile && current_user.profile.photo.attached? %>
+      <% content_for :meta_title, "#{current_user.full_name} is on #{DEFAULT_META["meta_product_name"]}" %>
+      <% content_for :meta_description, current_user.profile.bio %>
+      <% content_for :meta_image, cl_image_path(current_user.profile.photo.key) %>
+    <% end %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
 

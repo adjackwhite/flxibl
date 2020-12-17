@@ -14,6 +14,15 @@
 @import "pages/index";
 
 
+@import "social-share-button";
+.social-share-button {
+  .ssb-icon {
+    background-size: 70px 70px;
+    height: 70px;
+    width: 70px;
+  }
+}
+
 
 .select2-selection--multiple {
     border: none !important;
@@ -25,3 +34,5 @@
     border: 2px solid #E8E9EB !important;
     margin: 8px 0px !important;
 }
+
+
