@@ -1,7 +1,7 @@
 <div class="background-blue-edit">
   <div class="container py-5">
     <div class="col-md-8 mx-auto edit">
-      <%= link_to 'Back', profiles_path, class: "btn btn-pri my-3"%>
+      <%= link_to 'Back', profiles_path, class: "btn btn-sec my-3"%>
       <div class="form">
       <%= simple_form_for(@profile) do |f| %>
         <%= f.input :photo, as: :file %>
@@ -13,19 +13,19 @@
         <%= f.input :profession %>
         <%= f.input :bio %>
         <%= f.input :location %>
-        <%= f.button :submit, class: "btn btn-submit" %>
+        <%= f.button :submit,  class: "btn btn-pri px-3  my-2" %>
       <% end %>
       </div>
 
 
-      <div id="skill-form" class="form">
+      <div id="skill-form" class="my-5 form">
           <%= simple_form_for([ @profile, @profile_skill ], remote: true) do |f| %>
           <%= f.association :skill, label: "Skills (5 max)", collection: Skill.all.reject {|skill| @profile.skills.pluck(:skill).include?(skill.skill) }.map {|skill| [skill.skill, skill.id]} %>
-          <%= f.button :submit, class: "btn btn-submit my-2" %>
+          <%= f.button :submit, "Add skill", class: "btn btn-pri px-3  my-2" %>
         <% end %>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex flex-wrap my-4">
           <% @profile.profile_skills.each do |profile_skill| %>
-            <li id="skills" class="mx-2"><%= profile_skill.skill.skill %>
+            <li id="skills" class="mx-2 mb-2"><%= profile_skill.skill.skill %>
               <%= link_to 'x', profile_skill_path(profile_skill),
               method: :delete
             %></li>
@@ -34,11 +34,11 @@
       </div>
 
 
-      <div id="link-form" class="form">
+      <div id="link-form" class="my-5 form">
           <%= simple_form_for([ @profile, @website_link ], remote: true) do |f| %>
           <%= f.input :url, label: "Website link" %>
           <%= f.input :label %>
-          <%= f.button :submit, class: "btn btn-submit  my-2" %>
+          <%= f.button :submit, class: "btn btn-pri px-3  my-2" %>
         <% end %>
         <div class="d-flex">
         <% @profile.website_links.each do |website_link| %>
@@ -49,7 +49,7 @@
         <% end %>
         </div>
       </div>
-      <%= link_to 'Save', profiles_path, class: "btn btn-pri my-3" %>
+      <%= link_to 'Back', profiles_path, class: "btn btn-sec my-3" %>
     </div>
   </div>
 </div>

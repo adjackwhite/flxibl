@@ -95,7 +95,9 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.user.update(user_params) && @profile.update(profile_params)
-      redirect_to profile_path(@profile)
+      redirect_to edit_profile_path(@profile)
+      flash[:notice] = "Your profile has been updated"
+
     else
       render :new
     end

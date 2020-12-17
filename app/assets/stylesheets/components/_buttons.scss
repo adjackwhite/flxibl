@@ -2,10 +2,10 @@
     @extend .border-0;
     background-color: $blue;
     color: white;
-    padding: 8px 0px;
+    padding: 8px 24px;
     box-shadow: 0px 2px 0px blue;
     border-radius: 16px;
-    width: 124px;
+
     text-align: center;
     &:hover {
       box-shadow: 0px 8px 16px rgba(48, 76, 253, 0.2);
@@ -18,12 +18,11 @@
 .btn-sec {
     background-color: rgba(0, 0, 0, 0);
     color: $dark-gray;
-    padding: 8px 0px;
+    padding: 8px 24px;
     border-style: solid;
     border-width: 2px;
     border-color: $light-gray;
     border-radius: 16px;
-    width: 124px;
     text-align: center;
     &:hover {
       text-decoration: none;
@@ -33,7 +32,7 @@
     }
 }
   #btn-nav {
-    width: 180px;
+    width: 220px;
     margin: 0px 24px;
 }
 

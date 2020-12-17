@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :networks, dependent: :destroy
   has_many :profiles, through: :networks
   after_create :generate_profile
+  before_validation :set_freelancer_profile
   after_update :generate_network
   validates :manager, inclusion: { in: [true, false], message: "Please choose one type of profile" }
   # has_many :users, thrUser.ough: :networks
@@ -17,6 +18,11 @@ class User < ApplicationRecord
      Profile.create(user: self) if !self.manager
   end
 
+  def set_freelancer_profile
+    if self.invited_by
+      self.manager = false
+    end
+  end
 
   def generate_network
     if self.invited_by_id #if the user has been  invited
