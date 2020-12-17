@@ -21,7 +21,7 @@
       <div class="my-3">
         <p><%= @profile.bio %></p>
       </div>
-      <% if user_signed_in? && user.manager %>
+      <% if user_signed_in? && current_user.manager %>
         <div>
           <%= simple_form_for [ @profile, @note ] do |f| %>
             <%= f.input :content, label: false %>
