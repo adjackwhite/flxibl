@@ -23,7 +23,7 @@
           <%= f.association :skill, label: "Skills (5 max)", collection: Skill.all.reject {|skill| @profile.skills.pluck(:skill).include?(skill.skill) }.map {|skill| [skill.skill, skill.id]} %>
           <%= f.button :submit, class: "btn btn-submit my-2" %>
         <% end %>
-        <div class="d-flex">
+        <div class="d-flex justify-content-center">
           <% @profile.profile_skills.each do |profile_skill| %>
             <li id="skills" class="mx-2"><%= profile_skill.skill.skill %>
               <%= link_to 'x', profile_skill_path(profile_skill),
