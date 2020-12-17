@@ -23,7 +23,9 @@
           </li>
         <% elsif user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Share my profile", import_profiles_path, class: "btn-pri d-block", id: "btn-nav" %>
+            <%= link_to import_profiles_path, class: "btn-pri d-block", id: "btn-nav" do %>
+               Share my profile <i class="fas fa-share-alt mx-1"></i>
+            <% end %>
           </li>
       <% end %>
         <li class="nav-item dropdown">
