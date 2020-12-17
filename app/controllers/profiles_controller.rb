@@ -3,6 +3,7 @@ require 'csv'
 class ProfilesController < ApplicationController
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/
   before_action :set_profile, only: [:show, :edit, :update]
+  skip_before_action :authenticate_user!, only: [:show]
 
   def index
     if current_user.manager?

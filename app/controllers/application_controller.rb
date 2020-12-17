@@ -24,4 +24,8 @@ class ApplicationController < ActionController::Base
   def after_accept_path_for(resource)
     edit_profile_path(resource.profile)
   end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end

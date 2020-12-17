@@ -57,14 +57,14 @@
                   <h5> <%= freelancer.user.email %> </h5>
                 <% end %>
               <% end %>
-            <div>
               <% if freelancer.profession %>
                   <h6 id="profession"><%= freelancer.profession %></h6>
               <% end %>
+            <div>
+            </div>
               <% if freelancer.location %>
                   <p id="location"><i class="fas fa-map-marker-alt"></i> <%= freelancer.location %></p>
               <% end %>
-            </div>
             <div class="card-contact">
               <a class="btn-sec" href="mailto:"<% freelancer.user.email %>>Email</a>
               <a class="btn-sec" href="https://wa.me/" target="_blank"<%= freelancer.user.whatsapp_number %>>WhatsApp</a>
