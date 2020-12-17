@@ -27,7 +27,7 @@ puts "Database cleaned"
     whatsapp_number: Faker::PhoneNumber.cell_phone_in_e164,
     manager: [true, false].sample,
     company: Faker::Company.name,
-    title: ["Studio Manager", "Lead Project Manager", "General Manager", "Resource Manager"].sample
+    title: ["Studio Manager", "Project Manager", "Marketing Manager", "Head of creative", "Warehouse Manager", "Lead Project Manager", "General Manager", "Resource Manager"].sample
   )
   Profile.last&.destroy
   puts "#{User.count} users created"
@@ -39,7 +39,18 @@ end
 
 40.times do
   Skill.create!(
-    skill: Faker::Job.key_skill
+    skill: ["Adobe Acrobat",
+    "Adobe Creative Suite",
+    "Adobe Flash",
+    "Adobe Illustrator",
+    "Adobe InDesign",
+    "Adobe Photoshop",
+    "Dreamweaver",
+    "CSS",
+    "HTML",
+    "Quark",
+    "QuarkXpress",
+    "Photo Editing"].sample
   )
 end
 
@@ -47,13 +58,25 @@ end
 User.where(manager: false).each do |user|
   profile = Profile.create!(
     user: user,
-    profession: Faker::Job.position,
-    bio: Faker::Lorem.paragraph(sentence_count: 8),
-    location: Faker::Address.city
+    profession: ["Photographer",
+    "Stylist",
+    "UX Designer",
+    "Marketing Specialist",
+    "Videographer",
+    "Translator",
+    "Copywriter",
+    "Graphic Designer",
+    "Front-end Developer",
+    "Back-end Developer",
+    "Art Director",
+    "Retoucher"].sample,
+    bio: ["I am a UX/UI Designer with over 10 years experience driving successful design solutions for web and device UI customization - both interaction and visual design. I’m passionate about designing and finding solutions in order to satisfy user and business needs. I'm highly collaborative and blend creative, technical and management experience to lead projects from inception through completion.", "2 things are central keys to my work, knowledge and deep observation, which I believe are the best practice to encounter and solve visual problems. I developed as illustrator and fine artist alongside my professional development in design and visual branding, always had the goal of accompanying design structural elements with the right aesthetics, in the seek of big ideas."].sample
+    location: ["London", "Paris", "Dubai", "Berlin"].sample
   )
   file = URI.open('https://i.pravatar.cc/300')
   profile.photo.attach(io: file, filename: 'profile_img.jpg', content_type: 'image/png')
   puts "#{Profile.count} profiles created"
+
   rand(2..5).times do
     ProfileSkill.create(skill: Skill.all.sample, profile: profile )
   end
