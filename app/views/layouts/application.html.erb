@@ -14,15 +14,13 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <!-- Facebook Open Graph data -->
-    <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= request.original_url %>" />
-    <meta property="og:image" content="<%= meta_image %>" />
-    <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
   </head>
 
   <body>
+
     <% if user_signed_in? && current_user.profile && current_user.profile.photo.attached? && controller_name != "profiles" && action_name != "show"  %>
       <%= content_for :meta_image, cl_image_path(current_user.profile.photo.key) %>
       <%= content_for :meta_title, "#{current_user.profile.user.full_name} is on flxibl" %>

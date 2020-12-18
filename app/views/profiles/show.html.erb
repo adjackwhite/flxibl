@@ -1,6 +1,6 @@
-  <%= content_for :meta_image, cl_image_path(@profile&.photo&.key) || meta_image %>
-  <%= content_for :meta_title, "#{profile.user.full_name} is on flxibl" %>
-  <%= content_for :meta_description, "Add #{@profile.user.first_name} to your freelance network" %>
+<%= content_for :meta_image, cl_image_path(@profile&.photo&.key) %>
+<%= content_for :meta_title, "#{@profile.user.full_name} is on flxibl" %>
+<%= content_for :meta_description, "Add #{@profile.user.first_name} to your freelance network" %>
 
 <div class="container">
   <div class="row profile my-4">
