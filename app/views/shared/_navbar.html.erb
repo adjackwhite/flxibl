@@ -68,6 +68,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <% byebug %>
        <%= social_share_button_tag(current_user.full_name, url: "https://flxibl.herokuapp.com/profiles/#{current_user.profile.id}") %>
       </div>
     </div>
