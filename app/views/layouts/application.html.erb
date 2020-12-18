@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    <% if user_signed_in? && current_user.profile && current_user.profile.photo.attached? %>
+    <% if user_signed_in? && current_user.profile && current_user.profile.photo.attached? && controller_name != "profiles" && action_name != "show"  %>
       <%= content_for :meta_image, cl_image_path(current_user.profile.photo.key) %>
       <%= content_for :meta_title, "#{current_user.profile.user.full_name} is on flxibl" %>
       <%= content_for :meta_description, "Add #{current_user.profile.user.first_name} to your freelance network" %>
