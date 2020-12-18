@@ -37,10 +37,9 @@ puts "Database cleaned"
   end
 end
 
-40.times do
-  Skill.create!(
-    skill: ["Adobe Acrobat",
+["Adobe Acrobat",
     "Adobe Creative Suite",
+    "Javascript",
     "Adobe Flash",
     "Adobe Illustrator",
     "Adobe InDesign",
@@ -50,10 +49,7 @@ end
     "HTML",
     "Quark",
     "QuarkXpress",
-    "Photo Editing"].sample
-  )
-end
-
+    "Photo Editing"].each { |skill| Skill.create(skill: skill)}
 
 User.where(manager: false).each do |user|
   profile = Profile.create!(

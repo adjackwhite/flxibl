@@ -5,21 +5,22 @@
       <div>
         <%= text_field_tag :query,
           params[:query],
+          value: params[:query],
           class: "form-field mt-5",
           placeholder: "Search"
         %>
       </div>
       <div class="my-3">
         <label>Profession</label>
-        <select class="select2" style="width: 100%" name="profession[]" multiple="multiple">
-          <% Profile.all.each do |profile| %>
-            <option value="<%= profile.profession %>"><%= profile.profession %></option>
+        <select id="profession-filter" class="select2" data-selected="<%= params[:profession].to_json %>" style="width: 100%" name="profession[]" multiple="multiple">
+          <% Profile.all.pluck(:profession).uniq.each do |profession| %>
+            <option value="<%= profession %>"><%= profession %></option>
           <% end %>
         </select>
       </div>
       <div class="my-3">
         <label>Skills</label>
-        <select class="select2" style="width: 100%" name="skill[]" multiple="multiple">
+        <select id="skill-filter" class="select2" data-selected="<%= params[:skill].to_json %>" style="width: 100%" name="skill[]" multiple="multiple">
           <% Skill.all.each do |skill| %>
             <option value="<%= skill.skill %>"><%= skill.skill %></option>
           <% end %>
@@ -27,9 +28,9 @@
       </div>
       <div class="my-3">
         <label>Location</label>
-        <select class="select2" style="width: 100%" name="location[]" multiple="multiple">
-          <% Profile.all.each do |profile| %>
-            <option value="<%= profile.location %>"><%= profile.location %></option>
+        <select class="select2" id="location-filter" class="select2" data-selected="<%= params[:location].to_json %>" style="width: 100%" name="location[]" multiple="multiple">
+          <% Profile.all.pluck(:location).uniq.each do |location| %>
+            <option value="<%= location %>"><%= location %></option>
           <% end %>
         </select>
       </div>
