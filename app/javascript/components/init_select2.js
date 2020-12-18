@@ -2,6 +2,7 @@ import $ from 'jquery';
 import 'select2';
 
 const initSelect2 = () => {
+  if (document.querySelector(".select2-hidden-accessible")) return
   const prevProfessions = JSON.parse($('#profession-filter')[0].dataset.selected) || []
   console.log(prevProfessions)
   $('#profession-filter').val(prevProfessions).trigger('change');
